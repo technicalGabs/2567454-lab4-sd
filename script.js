@@ -1,12 +1,23 @@
 async function fetchCountries(url) {
     try {
         let name = document.getElementById("CountryName").value;
-        const urls = `${url}${name}`;
-        const response = await fetch(urls);
-        const result = await response.json();
-        document.getElementById("CountryName").value = '';
-        show_information(result[0]);
-        return result[0];
+
+        if(typeof name !== "string"){
+            const urls = `${url}${document.getElementById("CountryName").value = ''}`;
+            const response = await fetch(urls);
+            const result = await response.json();            
+            show_information(result[0]);
+            return result[0];
+        }else{
+            const urls = `${url}${name}`;
+            const response = await fetch(urls);
+            const result = await response.json();
+            document.getElementById("CountryName").value = '';
+            show_information(result[0]);
+            return result[0];
+        }
+
+        
     }
     catch (error) {
         console.warn(error);
@@ -23,10 +34,16 @@ function show_information(result) {
 const press_button = document.getElementById("SubmitCountryName");
 press_button.addEventListener("click", async function (callback) {
     callback.preventDefault();
+    document.getElementById('capital').innerText = `Capital: `;
+    document.getElementById('populace').innerText = `Population: `;
+    document.getElementById('region').innerText = `Region: `;
+    
+    document.getElementById('ImageID').src = '';
     const url = "https://restcountries.com/v3.1/name/";
     const country = await fetchCountries(url);
 
 
+    
     const boarda = document.getElementById('boarda');
     boarda.innerHTML = '';
 
@@ -36,12 +53,13 @@ press_button.addEventListener("click", async function (callback) {
         const Everything = await Responses.json();
 
         Everything.forEach(element => {
-            const item = document.createElement('div');
+            const item = document.createElement('li');
             item.innerHTML = `
                 <p>${element.name.common}</p>
                 <img src="${element.flags.svg}" alt="${element.name.common} flag" />
             `;
             boarda.appendChild(item);
         });
+        
     }
 });

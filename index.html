@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Find Country Info</title>
     <script src="script.js" defer></script>
-    <style href="styles.css"></style>
-    <h1> Find Country Info</h1>
+    <link rel="stylesheet" href="styles.css"> <!-- Corrected CSS linking -->
 </head>
-    <body>
-        <input type="text" id="CountryName" placeholder="Enter country name">
-        <button id="SubmitCountryName"> Submit</button>
-        <section id="country-info">
-            <ul>
-                <li id="capital">Capital </li>
-                <li id="populace">Population</li>
-                <li id="region">Region</li>
-                <li id="flag">Flag
-                    <img  id="ImageID" src="">
-                </li>
-            </ul>
-        </section>
-        <section id="bordering-countries">
-            <li id="boarda">
-                <img  id="IID" src="">
+<body>
+    <h1>Find Country Info</h1>
+    
+    <input type="text" id="CountryName" placeholder="Enter country name">
+    <button id="SubmitCountryName">Submit</button>
+
+    <section id="country-info">
+        <ul>
+            <li id="capital">Capital </li>
+            <li id="populace">Population</li>
+            <li id="region">Region</li>
+            <li id="flag">Flag
+                <img id="ImageID" src="">
             </li>
-        </section>
-    </body>
+        </ul>
+    </section>
+
+    <section id="bordering-countries">
+        <ul>
+            <li id="boarda"> Neighbouring countries:
+                <img id="IID" src="">
+            </li>
+        </ul>
+    </section>
+</body>
 </html>
